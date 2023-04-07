@@ -1,0 +1,48 @@
+/* /Pages/Index.razor.rz.scp.css */
+.title[b-lppml8dm8b] {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.subtitle[b-lppml8dm8b] {
+    font-weight: bold;
+}
+
+.text-container[b-lppml8dm8b] {
+    padding: 1px;
+    border: 1px solid black;
+}
+
+.code-editor-container[b-lppml8dm8b] {
+    height: 400px;
+}
+
+[b-lppml8dm8b] #code-editor {
+    width: 100%;
+    height: 100%;
+}
+
+.buttons[b-lppml8dm8b] {
+    margin-top: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+[b-lppml8dm8b] .input {
+    width: 50%;
+    min-width: 200px;
+}
+
+.output[b-lppml8dm8b] {
+    width : 100%;
+    height: 200px;
+}
+
+/* /Shared/MainLayout.razor.rz.scp.css */
+main[b-yy8d1mkshf] {
+    margin: auto;
+    padding: 10px;
+    width: 100%;
+    max-width: 1000px;
+}
