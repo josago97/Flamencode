@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Flamencode": {
+      "commandName": "Project",
+      "commandLineArgs": "\"D:\\JOSE\\Documents\\Proyectos C#\\Flamencode\\Examples\\hello_world.flam\""
+    }
+  }
+}
