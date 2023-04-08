@@ -1,11 +1,13 @@
-﻿export function registerLanguage(language, theme, tokens, commentToken) {
+﻿export function registerLanguage(language, theme, commentToken, singleTokens, pairTokens) {
 	monaco.languages.register({ id: language });
+
+	const allTokens = singleTokens.concat(pairTokens);
 
 	// Register a tokens provider for the language
 	monaco.languages.setMonarchTokensProvider(language, {
 		tokenizer: {
 			root: [
-				[new RegExp(`\\b(?:${tokens.join("|")})\\b`, 'gi'), "token"],
+				[new RegExp(`\\b(?:${allTokens.join("|")})\\b`, 'gi'), "token"],
 				[new RegExp(`${commentToken}.*`, 'gi'), "comment"],
 			],
 		},
@@ -34,12 +36,33 @@
 				startColumn: word.startColumn,
 				endColumn: word.endColumn,
 			};
-			var suggestions = tokens.map(t => ({
+
+			var singleTokenSuggestions = allTokens.map(t => ({
 				label: t,
 				kind: monaco.languages.CompletionItemKind.Text,
 				insertText: t,
 				range: range,
 			}));
+
+			var pairTokenSuggestions = [];
+
+			for (let i = 0; i < pairTokens.length; i += 2) {
+				let suggestion = {
+					label: pairTokens[i] + "-" + pairTokens[i + 1],
+					kind: monaco.languages.CompletionItemKind.Snippet,
+					insertText: [
+						pairTokens[i],
+						"\t$0",
+						pairTokens[i + 1],
+					].join("\n"),
+					insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+					range: range
+				};
+
+				pairTokenSuggestions.push(suggestion);
+			}
+
+			var suggestions = singleTokenSuggestions.concat(pairTokenSuggestions);
 
 			return { suggestions: suggestions };
 		},
