@@ -10,6 +10,9 @@ public partial class Index
 {
     private const string LANGUAJE_NAME = "flamencode";
     private const string EDITOR_THEME = LANGUAJE_NAME + "-theme";
+    private const string COMMENT_TOKEN = "#";
+    private static readonly string[] SINGLE_TOKENS = { "ole", "anda", "arsa", "asi", "mira", "toma" };
+    private static readonly string[] PAIR_TOKENS = { "dale", "arre" };
 
     [Inject]
     public IJSRuntime JSRuntime { get; set; }
@@ -37,16 +40,16 @@ public partial class Index
         await CodeEditor.SetValue(codeExample);
     }
 
-    protected override async Task OnParametersSetAsync()
+    protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        await base.OnParametersSetAsync();
+        await base.OnAfterRenderAsync(firstRender);
 
-        string commentToken = "#";
-        string[] singleTokens = { "ole", "anda", "arsa", "asi", "mira", "toma" };
-        string[] pairTokens = { "dale", "arre" };
-
-        var jsmodule = await JSModuleLoader.GetModule();
-        await jsmodule.InvokeVoidAsync("registerLanguage", LANGUAJE_NAME, EDITOR_THEME, commentToken, singleTokens, pairTokens);
+        if (firstRender)
+        {
+            var jsmodule = await JSModuleLoader.GetModule();
+            await jsmodule.InvokeVoidAsync("registerLanguage", LANGUAJE_NAME, EDITOR_THEME, 
+                COMMENT_TOKEN, SINGLE_TOKENS, PAIR_TOKENS);
+        }
     }
 
     private async Task LoadFileAsync(InputFileChangeEventArgs e)
