@@ -119,8 +119,7 @@ public partial class Index
         Error = errorReader.ReadToEnd();
         Result = outputReader.ReadToEnd();
         TimeSpan elapsed = stopwatch.Elapsed;
-        Time = elapsed.ToString();
-        //Time = $"{(int)elapsed.TotalMinutes}:{elapsed:ss:m}stopwatch.Elapsed.ToString("");
+        Time = $"{(int)elapsed.TotalMinutes}:{elapsed:ss\\.ffffff}";
         ExecuteSpinClass = HIDE_CLASS;
         ExecuteTimeClass = null;
 

@@ -15,13 +15,23 @@ internal class Program
         }
         else
         {
-            using Stream inputStream = new ConsoleInputReader();
-            using Stream outputStream = Console.OpenStandardOutput();
-            using Stream errorStream = Console.OpenStandardError();
+            string filePath = args[0];
 
-            string code = File.ReadAllText(args[0]);
-            Interpreter interpreter = new Interpreter(code, inputStream, outputStream, errorStream);
-            interpreter.Run();
+            if (File.Exists(filePath))
+            {
+
+                string code = File.ReadAllText(filePath);
+                using Stream inputStream = new ConsoleInputReader();
+                using Stream outputStream = Console.OpenStandardOutput();
+                using Stream errorStream = Console.OpenStandardError();
+
+                Interpreter interpreter = new Interpreter(code, inputStream, outputStream, errorStream);
+                interpreter.Run();
+            } 
+            else
+            {
+                Console.Error.WriteLine($"File {filePath} does not exist");
+            }
         }
     }
 }
