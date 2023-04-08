@@ -53,7 +53,7 @@
       "url": "css\/open-iconic\/README.md"
     },
     {
-      "hash": "sha256-79ShnSgmfbGO09NNDYdtBpVMHcd2Ck+z7jEZ5SPxqrc=",
+      "hash": "sha256-kT5M\/wfzJvSOKCtnzmIWSNb0sxRFf1q0uRfsm3xdEAc=",
       "url": "data\/hello_world.flam"
     },
     {
@@ -101,7 +101,7 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-AMj8pR1ckNthp\/TbcQcfqXppLPAVWAeUTIyPt1EC8lg=",
+      "hash": "sha256-Xkq+PTZI2sNfcXBekxozkJpV\/QLEp6aIQ\/OULJ7TxeQ=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -109,11 +109,11 @@
       "url": "_framework\/BlazorMonaco.dll"
     },
     {
-      "hash": "sha256-QavlgSkcG+8cgO\/Q7TWlIP+5I3DsktQ5W7yISpz+J70=",
+      "hash": "sha256-KaDF17E4tOiDXorar\/fGRG4bkFhDSoajZwen93MS3so=",
       "url": "_framework\/Flamencode.Core.dll"
     },
     {
-      "hash": "sha256-5hJawCrfhWKHALY24+lak9PWFw95990Jw43odxZ\/6HU=",
+      "hash": "sha256-AFnYKW1AsIK\/Wj4ML8goKy7S7WEdql8x3lw2QLAM8F0=",
       "url": "_framework\/Flamencode.WebEditor.dll"
     },
     {
@@ -237,7 +237,7 @@
       "url": "_framework\/System.ObjectModel.dll"
     },
     {
-      "hash": "sha256-mPOWjxfeM2E4pxuWofI0b31T5ulSdO23kFXkKUJfgHE=",
+      "hash": "sha256-1FEGYQNHMl3PCC3vRrkTnnaxAl5TJoBwbJF3cQwIEzo=",
       "url": "_framework\/System.Private.CoreLib.dll"
     },
     {
@@ -245,7 +245,7 @@
       "url": "_framework\/System.Private.Uri.dll"
     },
     {
-      "hash": "sha256-1EN7Sr6Bac4NrHUyYU6NuCRwGT1afl2zBJFx1V2dqps=",
+      "hash": "sha256-beFxm8Ilz1CbzfkP7w94cGGOXW69xMAURHHDaW1b04w=",
       "url": "_framework\/System.Runtime.dll"
     },
     {
@@ -269,11 +269,11 @@
       "url": "_framework\/dotnet.7.0.4.5nwz0radcg.js"
     },
     {
-      "hash": "sha256-faMcSW\/dEPgPeylnhyWnngITt1N4Guut0SnZjBoo7NU=",
+      "hash": "sha256-c1BSzsalLg\/fUe+9D18mzRzUTsEM7+EO7oCD1XsTsc0=",
       "url": "_framework\/dotnet.wasm"
     },
     {
-      "hash": "sha256-qVhy4tt6KJes\/oWwxI7pCOoYdsLfdw7JWR7lwzFEVL4=",
+      "hash": "sha256-vxknZwMjHfu6I9WTBMXbWc0gQ2N\/fq89A1JtrmwFqe4=",
       "url": "Flamencode.WebEditor.styles.css"
     },
     {
@@ -1257,5 +1257,5 @@
       "url": "_content\/BlazorMonaco\/lib\/monaco-editor\/min\/vs\/loader.min.js"
     }
   ],
-  "version": "mAL1MTBc"
+  "version": "nI2JdbEQ"
 };

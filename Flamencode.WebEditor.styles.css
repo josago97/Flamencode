@@ -23,10 +23,17 @@
 }
 
 .buttons[b-lppml8dm8b] {
-    margin-top: 5px;
+    margin-top: 10px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+}
+
+.input-output[b-lppml8dm8b] {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 [b-lppml8dm8b] .input {
@@ -34,11 +41,45 @@
     min-width: 200px;
 }
 
+.output-header[b-lppml8dm8b] {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
 .output[b-lppml8dm8b] {
     width : 100%;
     height: 200px;
 }
 
+.output > .error[b-lppml8dm8b] {
+    color: red;
+}
+
+.hide[b-lppml8dm8b] {
+    display: none;
+}
+
+.spinner[b-lppml8dm8b] {
+  border: 4px solid rgba(0, 0, 0, .25);
+  width: 1.75em;
+  height: 1.75em;
+  border-radius: 50%;
+  border-left-color: #09f;
+  
+  animation: spin-b-lppml8dm8b 1s linear infinite;
+}
+
+@keyframes spin-b-lppml8dm8b {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
 /* /Shared/MainLayout.razor.rz.scp.css */
 main[b-yy8d1mkshf] {
     margin: auto;
