@@ -4,8 +4,8 @@ Web editor https://josago97.github.io/Flamencode/
 
 | Flamencode | Brainfuck |  Description |  
 |---|---|---|
-| asi | > | Increment the data pointer (to point to the next cell to the right) |
-| anda | < | Decrement the data pointer (to point to the next cell to the left) |
+| anda | > | Increment the data pointer (to point to the next cell to the right) |
+| asi | < | Decrement the data pointer (to point to the next cell to the left) |
 | ole | + | Increment (increase by one) the byte at the data pointer |
 | arsa | - | Decrement (decrease by one) the byte at the data pointer |
 | mira | . | Output the byte at the data pointer |

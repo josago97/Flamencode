@@ -4,8 +4,8 @@ internal class Settings
 {
     public static readonly Dictionary<string, Command> COMMANDS = new Dictionary<string, Command>()
     {
-        { "asi", Command.IncrementMemoryPointer },
-        { "anda", Command.DecrementMemoryPointer },
+        { "anda", Command.IncrementMemoryPointer },
+        { "asi", Command.DecrementMemoryPointer },
 
         { "ole", Command.IncrementMemoryCell },
         { "arsa", Command.DecrementMemoryCell },

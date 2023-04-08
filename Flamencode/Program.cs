@@ -16,7 +16,7 @@ internal class Program
         else
         {
             using Stream inputStream = new ConsoleInputReader();
-            using Stream outputStream = File.Create("out.txt");//Console.OpenStandardOutput();
+            using Stream outputStream = Console.OpenStandardOutput();
             using Stream errorStream = Console.OpenStandardError();
 
             string code = File.ReadAllText(args[0]);

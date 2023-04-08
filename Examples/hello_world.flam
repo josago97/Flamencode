@@ -2,21 +2,21 @@
 
 ole ole ole ole ole ole ole ole 						# Set Cell 0 to 8
 			
-dale			
-	asi ole ole ole ole 								# Go to Cell 1 and set 4
+dale													# Start loop
+	anda ole ole ole ole 								# Go to Cell 1 and set 4
 	dale                								# As the cell will be cleared by the loop
-        asi ole ole     								# Add 4*2 to Cell 2
-        asi ole ole ole 								# Add 4*3 to Cell 3
-        asi ole ole ole 								# Add 4*3 to Cell 4
-        asi ole         								# Add 4 to Cell 5
-        anda anda anda anda arsa						# Decrement the loop counter in Cell 1
+        anda ole ole     								# Add 4*2 to Cell 2
+        anda ole ole ole 								# Add 4*3 to Cell 3
+        anda ole ole ole 								# Add 4*3 to Cell 4
+        anda ole         								# Add 4 to Cell 5
+        asi asi asi asi arsa						# Decrement the loop counter in Cell 1
     arre                								# Loop until Cell 1 is zero
-    asi ole                  							# Add 1 to Cell 2
-    asi ole                  							# Add 1 to Cell 3
-    asi arsa                  							# Subtract 1 from Cell 4
-    asi asi ole                 						# Add 1 to Cell 6
-    dale anda arre         								# Move back to the first zero cell you find; this will be Cell 1 which was cleared by the previous loop
-    anda arsa                							# Decrement the loop Counter in Cell 0
+    anda ole                  							# Add 1 to Cell 2
+    anda ole                  							# Add 1 to Cell 3
+    anda arsa                  							# Subtract 1 from Cell 4
+    anda anda ole                 						# Add 1 to Cell 6
+    dale asi arre         								# Move back to the first zero cell you find; this will be Cell 1 which was cleared by the previous loop
+    asi arsa                							# Decrement the loop Counter in Cell 0
 arre                    								# Loop until Cell 0 is zero
 
 # The result of this is:
@@ -24,15 +24,15 @@ arre                    								# Loop until Cell 0 is zero
 # Contents:   0   0  72 104  88  32   8
 # Pointer :   ^
 
-asi asi toma                   							# Cell 2 has value 72 which is 'H'
-asi arsa arsa arsa toma                   				# Subtract 3 from Cell 3 to get 101 which is 'e'
+anda anda toma                   							# Cell 2 has value 72 which is 'H'
+anda arsa arsa arsa toma                   				# Subtract 3 from Cell 3 to get 101 which is 'e'
 ole ole ole ole ole ole ole toma toma                   # Likewise for 'll' from Cell 3
 ole ole ole toma										# Likewise for 'o' from Cell 3
-asi asi toma                     						# Cell 5 is 32 for the space
-anda arsa toma                     						# Subtract 1 from Cell 4 for 87 to give a 'W'
-anda toma                      							# Cell 3 was set to 'o' from the end of 'Hello'
+anda anda toma                     						# Cell 5 is 32 for the space
+asi arsa toma                     						# Subtract 1 from Cell 4 for 87 to give a 'W'
+asi toma                      							# Cell 3 was set to 'o' from the end of 'Hello'
 ole ole ole toma  										# Cell 3 for 'r'
 arsa arsa arsa arsa arsa arsa toma						# Cell 3 for 'l'
 arsa arsa arsa arsa arsa arsa arsa arsa toma			# Cell 3 for 'd'
-asi asi ole toma                    					# Add 1 to Cell 5 gives us an exclamation point
-asi ole ole toma            							# And finally a newline from Cell 6
+anda anda ole toma                    					# Add 1 to Cell 5 gives us an exclamation point
+anda ole ole toma            							# And finally a newline from Cell 6

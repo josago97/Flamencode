@@ -1,5 +1,5 @@
 # Read input and print it
 
-mira dale asi mira arre 	# Read until EOF
-anda dale anda arre asi		# Go back until the begining
-dale toma asi arre			# Print
+mira dale anda mira arre 	# Read until EOF
+asi dale asi arre anda		# Go back until the begining
+dale toma anda arre			# Print
