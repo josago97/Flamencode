@@ -101,7 +101,7 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-B2V9+mTMzvm8KkbbD+K3e\/CrBD2SDE1yY6gn1qlq4RA=",
+      "hash": "sha256-hA4wJN6cMFTX5z5gCAGSk3aPm8IWOYT6PAUPprOYvFU=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -113,7 +113,7 @@
       "url": "_framework\/Flamencode.Core.dll"
     },
     {
-      "hash": "sha256-6tMMciVQeZCOhhHBIHj01V0vPombqocSu4XgvJDbpYc=",
+      "hash": "sha256-5hJawCrfhWKHALY24+lak9PWFw95990Jw43odxZ\/6HU=",
       "url": "_framework\/Flamencode.WebEditor.dll"
     },
     {
@@ -269,7 +269,7 @@
       "url": "_framework\/dotnet.7.0.4.5nwz0radcg.js"
     },
     {
-      "hash": "sha256-4EzqjvuHTjsTFwRhV7yMYIfT2mciApCKieuhQgsJXuY=",
+      "hash": "sha256-qaXSc+UeRgE3\/yF88vR0wpdcJSgPaWhpUFYkW6ibrg8=",
       "url": "_framework\/dotnet.wasm"
     },
     {
@@ -1257,5 +1257,5 @@
       "url": "_content\/BlazorMonaco\/lib\/monaco-editor\/min\/vs\/loader.min.js"
     }
   ],
-  "version": "7VM9Gz0v"
+  "version": "rxMmkvj6"
 };
