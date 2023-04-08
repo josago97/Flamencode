@@ -14,18 +14,6 @@ internal class Settings
         { "toma", Command.Write },
 
         { "dale", Command.JumpForward },
-        { "arre", Command.JumpBackward },
-
-        { ">", Command.IncrementMemoryPointer },
-        { "<", Command.DecrementMemoryPointer },
-
-        { "+", Command.IncrementMemoryCell },
-        { "-", Command.DecrementMemoryCell },
-
-        { ",", Command.Read },
-        { ".", Command.Write },
-
-        { "[", Command.JumpForward },
-        { "]", Command.JumpBackward }
+        { "arre", Command.JumpBackward }
     };
 }

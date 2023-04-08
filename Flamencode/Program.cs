@@ -15,11 +15,6 @@ internal class Program
         }
         else
         {
-            /*string code = File.ReadAllText(args[0]);
-            var p = new Prueba(code);
-            p.Run();
-            */
-            
             using Stream inputStream = new ConsoleInputReader();
             using Stream outputStream = File.Create("out.txt");//Console.OpenStandardOutput();
             using Stream errorStream = Console.OpenStandardError();
