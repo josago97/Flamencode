@@ -81,9 +81,11 @@ public class Interpreter
         return result;
     }
 
-    public void Run()
+    public void Run(bool reset = false)
     {
         IsRunning = true;
+
+        if (reset) Initialize();
 
         try
         {
@@ -95,7 +97,7 @@ public class Interpreter
                 }
             }
         }
-        catch (Exception ex) 
+        catch (Exception ex)
         {
             ShowError(ex.Message);
         }

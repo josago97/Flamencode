@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using BlazorMonaco.Editor;
 using Flamencode.WebEditor.Utils;
 using Microsoft.AspNetCore.Components;
@@ -8,35 +9,48 @@ namespace Flamencode.WebEditor.Pages;
 
 public partial class Index
 {
-    private const string LANGUAJE_NAME = "flamencode";
-    private const string EDITOR_THEME = LANGUAJE_NAME + "-theme";
+    private const string FILE_EXTENSION = ".flam";
+    private const string EXAMPLE_PATH = "./data/hello_world.flam";
+    private const string JS_PATH = "./app.js";
+    private const string JS_REGISTER_LANGUAGE_FUNCTION = "registerLanguage";
+    private const string JS_SAVE_FUNCTION = "saveFile";
+    private const string DEFAULT_SAVE_FILENAME = "code" + FILE_EXTENSION;
+    private const string LANGUAGE_NAME = "flamencode";
+    private const string EDITOR_THEME = LANGUAGE_NAME + "-theme";
     private const string COMMENT_TOKEN = "#";
     private static readonly string[] SINGLE_TOKENS = { "ole", "anda", "arsa", "asi", "mira", "toma" };
     private static readonly string[] PAIR_TOKENS = { "dale", "arre" };
+    private const string EXECUTE_BUTTON_TEXT = "Execute";
+    private const string PAUSE_BUTTON_TEXT = "Pause";
+    private const string HIDE_CLASS = "hide";
+
+    private Interpreter _interpreter;
 
     [Inject]
-    public IJSRuntime JSRuntime { get; set; }
+    private IJSRuntime JSRuntime { get; set; }
     [Inject]
-    public HttpClient HttpClient { get; set; }
+    private HttpClient HttpClient { get; set; }
 
     private JSModuleLoader JSModuleLoader { get; set; }
     private StandaloneCodeEditor CodeEditor { get; set; }
-
-    private string Code { get; set; }
+    private string ExecutePauseButtonText { get; set; } = EXECUTE_BUTTON_TEXT;
+    private string ExecuteSpinClass { get; set; } = HIDE_CLASS;
+    private string ExecuteTimeClass { get; set; } = HIDE_CLASS;
     private string Input { get; set; }
     private string Error { get; set; }
     private string Result { get; set; }
+    private string Time { get; set; }
 
     protected override void OnInitialized()
     {
-        JSModuleLoader = new JSModuleLoader(JSRuntime, "./app.js");
+        JSModuleLoader = new JSModuleLoader(JSRuntime, JS_PATH);
     }
 
     protected override async Task OnInitializedAsync()
     {
         await base.OnInitializedAsync();
 
-        string codeExample = await HttpClient.GetStringAsync("./data/hello_world.flam");
+        string codeExample = await HttpClient.GetStringAsync(EXAMPLE_PATH);
         await CodeEditor.SetValue(codeExample);
     }
 
@@ -47,8 +61,8 @@ public partial class Index
         if (firstRender)
         {
             var jsmodule = await JSModuleLoader.GetModule();
-            await jsmodule.InvokeVoidAsync("registerLanguage", LANGUAJE_NAME, EDITOR_THEME, 
-                COMMENT_TOKEN, SINGLE_TOKENS, PAIR_TOKENS);
+            await jsmodule.InvokeVoidAsync(JS_REGISTER_LANGUAGE_FUNCTION, LANGUAGE_NAME,
+                EDITOR_THEME, COMMENT_TOKEN, SINGLE_TOKENS, PAIR_TOKENS);
         }
     }
 
@@ -66,19 +80,36 @@ public partial class Index
         string code = await CodeEditor.GetValue();
 
         var jsmodule = await JSModuleLoader.GetModule();
-        await jsmodule.InvokeVoidAsync("saveFile", code, "myCode.flam");
+        await jsmodule.InvokeVoidAsync(JS_SAVE_FUNCTION, code, DEFAULT_SAVE_FILENAME);
     }
 
+    private async Task ExecutePauseAsync()
+    {
+        bool isRunning = _interpreter != null && _interpreter.IsRunning;
+
+        if (isRunning)
+            Pause();
+        else
+            await ExecuteAsync();
+    }
+
+    // TODO: Use web worker when supported in .NET7 (https://github.com/Tewr/BlazorWorker/issues/85)
+    // or when multithreading is supported (https://github.com/dotnet/runtime/issues/68162)
     private async Task ExecuteAsync()
     {
-        Code = await CodeEditor.GetValue();
+        Error = Result = Time = string.Empty;
+        ExecuteSpinClass = null;
+        ExecuteTimeClass = HIDE_CLASS;
+        UpdateExecutePauseButton(true);
 
         using Stream inputStream = new InputStream(Input);
         using Stream outputStream = new MemoryStream();
         using Stream errorStream = new MemoryStream();
+        string code = await CodeEditor.GetValue();
+        Stopwatch stopwatch = Stopwatch.StartNew();
 
-        Interpreter interpreter = new Interpreter(Code, inputStream, outputStream, errorStream);
-        interpreter.Run();
+        _interpreter = new Interpreter(code, inputStream, outputStream, errorStream);
+        await Task.Run(() => _interpreter.Run());
 
         outputStream.Position = 0;
         errorStream.Position = 0;
@@ -86,7 +117,28 @@ public partial class Index
         using TextReader errorReader = new StreamReader(errorStream);
 
         Error = errorReader.ReadToEnd();
-        Result = Error + outputReader.ReadToEnd();
+        Result = outputReader.ReadToEnd();
+        TimeSpan elapsed = stopwatch.Elapsed;
+        Time = elapsed.ToString();
+        //Time = $"{(int)elapsed.TotalMinutes}:{elapsed:ss:m}stopwatch.Elapsed.ToString("");
+        ExecuteSpinClass = HIDE_CLASS;
+        ExecuteTimeClass = null;
+
+        UpdateExecutePauseButton(false);
+        StateHasChanged();
+    }
+
+    private void Pause()
+    {
+        _interpreter?.Pause();
+    }
+
+    private void UpdateExecutePauseButton(bool isRunning)
+    {
+        if (isRunning)
+            ExecutePauseButtonText = PAUSE_BUTTON_TEXT;
+        else
+            ExecutePauseButtonText = EXECUTE_BUTTON_TEXT;
     }
 
     private StandaloneEditorConstructionOptions EditorConstructionOptions(StandaloneCodeEditor editor)
@@ -95,7 +147,7 @@ public partial class Index
         {
             AutomaticLayout = true,
             Theme = EDITOR_THEME,
-            Language = LANGUAJE_NAME
+            Language = LANGUAGE_NAME
         };
     }
 

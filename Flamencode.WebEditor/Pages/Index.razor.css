@@ -22,10 +22,17 @@
 }
 
 .buttons {
-    margin-top: 5px;
+    margin-top: 10px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+}
+
+.input-output {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 ::deep .input {
@@ -33,8 +40,42 @@
     min-width: 200px;
 }
 
+.output-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
 .output {
     width : 100%;
     height: 200px;
 }
 
+.output > .error {
+    color: red;
+}
+
+.hide {
+    display: none;
+}
+
+.spinner {
+  border: 4px solid rgba(0, 0, 0, .25);
+  width: 1.75em;
+  height: 1.75em;
+  border-radius: 50%;
+  border-left-color: #09f;
+  
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

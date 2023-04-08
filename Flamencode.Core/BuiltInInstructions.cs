@@ -1,4 +1,6 @@
-﻿namespace Flamencode;
+﻿using static System.Runtime.InteropServices.JavaScript.JSType;
+
+namespace Flamencode;
 
 internal static class BuiltInInstructions
 {
@@ -36,7 +38,7 @@ internal static class BuiltInInstructions
 
     public static void JumpForward(Interpreter machine)
     {
-        if (machine.Memory[machine.MemoryPointer] == 0)
+        if (machine.Memory[machine.MemoryPointer] == 0) // No loop
         {
             Function function = (Function)machine.CurrentInstruction;
             machine.CodePointer = function.End;
@@ -45,7 +47,7 @@ internal static class BuiltInInstructions
 
     public static void JumpBackward(Interpreter machine)
     {
-        if (machine.Memory[machine.MemoryPointer] != 0)
+        if (machine.Memory[machine.MemoryPointer] != 0) // Start loop
         {
             Function function = (Function)machine.CurrentInstruction;
             machine.CodePointer = function.Start;

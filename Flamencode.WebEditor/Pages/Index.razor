@@ -12,22 +12,33 @@
 
 <div class="buttons">
     <div>
-        <label for="filePicker">
-            <button style="pointer-events: none; cursor: pointer;">Load</button>
+        <label for="filePicker" style="cursor: pointer;">
+            <button style="pointer-events: none;">Load</button>
         </label>
-        <InputFile id="filePicker" OnChange="@LoadFileAsync" lang="en" accept=".flam" hidden/>
+        <InputFile id="filePicker" OnChange="@LoadFileAsync" accept="@FILE_EXTENSION" hidden/>
         <button @onclick="SaveFileAsync">Save</button>
     </div>
-    <button @onclick="ExecuteAsync">Execute</button>
+    <button @onclick="ExecutePauseAsync">@ExecutePauseButtonText</button>
 </div>
 
-
-<div>
-    <h5>Input</h5>
-    <InputText @bind-Value=Input class="input" />
-
-    <h5>Output</h5>
-    <div class="text-container output">@Result</div>
+<div class="input-output">
+    <div>
+        <h5>Input</h5>
+        <InputText @bind-Value=Input class="input" />
+    </div>
+    <div>
+        <div class="output-header">
+            <h5>Output</h5>
+            <div>
+                <div class="spinner @ExecuteSpinClass"/>
+                <div class="@ExecuteTimeClass">Time: @Time</div>
+            </div>        
+        </div>
+        <div class="text-container output">
+            <div class="error">@Error</div>
+            <div>@Result</div>
+        </div>
+    </div>
 </div>
 
 
