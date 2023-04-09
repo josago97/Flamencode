@@ -52,19 +52,10 @@ jobs:
         
     # Upload release
     - name: Upload release asset
-        uses: actions/upload-release-asset@v1
-        with:
-          asset_path: ./bin/Release/net6.0/publish/MyProject.exe # Reemplaza con la ruta al ejecutable generado en tu proyecto
-          asset_name: MyProject.exe # Nombre del ejecutable en la Release
-          asset_content_type: application/octet-stream
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    
-    
-    # Commit dataset to dataset branch
-    #- name: Commit dataset to dataset branch
-    #  uses: JamesIves/github-pages-deploy-action@3.7.1
-    #  with:
-    #    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    #    BRANCH: $DATASET_BRANCH
-    #    FOLDER: release/$DATASET_FOLDER
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        asset_path: ./release/MyProject.exe # Reemplaza con la ruta al ejecutable generado en tu proyecto
+        asset_name: MyProject.exe # Nombre del ejecutable en la Release
+        asset_content_type: application/octet-stream
