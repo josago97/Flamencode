@@ -61,7 +61,7 @@ jobs:
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
         asset_path: ./release/*/* # Folders with executables
-        asset_name: ${{ filename }} # Nombre del ejecutable en la Release
+        asset_name: Flamencode-{{filename}}.exe # Nombre del ejecutable en la Release
         asset_content_type: application/octet-stream
     
     - name: List Assets
