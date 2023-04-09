@@ -38,8 +38,8 @@ jobs:
     - name: Build .NET Project
       run: |
         for (( i=0; i<${#OPERATIVE_SYSTEM_RUNTIMES[@]}; i++ )); do
-          runtime=${OPERATIVE_SYSTEM_RUNTIMES[i]}
-          folder=${OPERATIVE_SYSTEM_FOLDERS[i]}
+          runtime=${OPERATIVE_SYSTEM_RUNTIMES[$i]}
+          folder=${OPERATIVE_SYSTEM_FOLDERS[$i]}
           echo $i
           echo $runtime
           echo $folder
