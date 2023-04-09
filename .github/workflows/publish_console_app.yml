@@ -40,7 +40,7 @@ jobs:
     
     - name: Prueba
       run: |
-        e=${{ fromJSON(env.ABCD) }}
+        e=${{ fromJSON(env.ABC) }}
         echo $e
         for (( i=0; i<${#e[@]}; i+=2 )); do
           a=${e[i]}
