@@ -19,6 +19,7 @@ env:
   OPERATIVE_SYSTEM_FOLDERS: Windows64 Macos64 Linux64
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   ABC: '["hola", "mundo"]'
+  ABCD: '(hola mundo)'
 
 on:
   workflow_dispatch:
@@ -39,7 +40,7 @@ jobs:
     
     - name: Prueba
       run: |
-        e=${{ fromJSON(env.ABC) }}
+        e=${{ fromJSON(env.ABCD) }}
         for (( i=0; i<${#e[@]}; i+=2 )); do
           a=${e[i]}
           b=${e[i+1]}
