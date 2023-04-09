@@ -39,7 +39,7 @@ jobs:
     
     - name: Prueba
       run: |
-        e=${{ fromJSON(ABC) }}
+        e=${{ fromJSON(${{env.ABC}}) }}
         for (( i=0; i<${#e[@]}; i+=2 )); do
           a=${e[i]}
           b=${e[i+1]}
