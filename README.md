@@ -1,7 +1,8 @@
 # Flamencode
+Flamencode is a very low-level joke programming language made with C# and it is based on the Brainfuck language.This language uses some of the typical expressions used in flamenco songs as the name of the operators.
 
-Web editor https://josago97.github.io/Flamencode/
-
+## Syntax
+Comments start from the '#' character and end at the line break.
 | Flamencode | Brainfuck |  Description |  
 |---|---|---|
 | anda | > | Increment the data pointer (to point to the next cell to the right) |
@@ -14,6 +15,7 @@ Web editor https://josago97.github.io/Flamencode/
 | arre | ] | If the byte at the data pointer is nonzero, then instead of moving the instruction pointer forward to the next command, jump it back to the command after the matching `dale` command |
 
 ## Example Hello World
+In the [Examples folder](https://github.com/josago97/Flamencode/tree/main/Examples) there are some sample implementations, example Hello World:
 ```
 # Prints Hello World!
 
@@ -54,3 +56,9 @@ arsa arsa arsa arsa arsa arsa arsa arsa toma  # Cell 3 for 'd'
 anda anda ole toma                            # Add 1 to Cell 5 gives us an exclamation point
 anda ole ole toma                             # And finally a newline from Cell 6
 ```
+## How to use
+To run a file code, you can download the executable corresponding to your operating system and type in the shell
+```
+Flamencode.exe /myFolder/myCode.flam
+```
+Also there is a [web editor](https://josago97.github.io/Flamencode/).
