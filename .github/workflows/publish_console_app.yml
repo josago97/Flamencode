@@ -8,7 +8,7 @@ env:
   PROJECT_NAME: Flamencode
   RELEASE_FOLDER: release
   OPERATIVE_SYSTEM_RUNTIMES: win-x64 osx-x64 linux-x64
-  OPERATIVE_SYSTEM_FOLDERS: Windows64 Macos64 Linux64
+  OPERATIVE_SYSTEM_FOLDERS: Windows-x64 Macos-x64 Linux-x64
 
 on:
   workflow_dispatch:
@@ -39,7 +39,8 @@ jobs:
           fullPath=${releaseFolder}/${folder}
           dotnet publish $PROJECT_NAME/$PROJECT_NAME.csproj -r $runtime -c Release -o $fullPath --nologo --self-contained true /p:PublishSingleFile=true /p:DebugType=None /p:DebugSymbols=false
           cd $fullPath
-          zip -r ${releaseFolder}/${folder}.zip *
+          ls
+          zip -r ../${folder}.zip *
         done
     
     - name: Create release
