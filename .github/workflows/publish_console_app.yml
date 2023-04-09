@@ -41,7 +41,7 @@ jobs:
     
     - name: Prueba
       run: |
-        e=(${{ env.MY_ARRAY//,/ }})
+        IFS=',' read -ra e <<< "${{ env.MY_ARRAY }}"
         echo "${e[@]}"
         for (( i=0; i<${#e[@]}; i+=2 )); do
           a=${e[i]}
