@@ -1,12 +1,12 @@
 # This workflow will build a .NET project
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
 
-name: Publish dataset
+name: Publish console app
 
 # Declaring custom variables
 env:
   PROJECT_NAME: Flamencode
-  OPERATIVE_SYSTEMS: ("win-x64" "osx-x64" "linux-x64")
+  OPERATIVE_SYSTEMS: '["win-x64" "osx-x64" "linux-x64"]'
 
 on:
   workflow_dispatch:
