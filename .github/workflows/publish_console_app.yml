@@ -48,15 +48,17 @@ jobs:
           b=${e[i+1]}
           echo "a=$a, b=$b"
         done
-        cd release
-        ls
         
     # Build project to the release-folder
     - name: Build .NET Project
       run: |
-        runtime=${{matrix.runtime}}
-        folder=${{matrix.folder}}
-        dotnet publish $PROJECT_NAME/$PROJECT_NAME.csproj -r $runtime -c Release -o release/$folder --nologo --self-contained true /p:PublishSingleFile=true /p:DebugType=None /p:DebugSymbols=false
+        IFS=' ' read -ra runtimes <<< "${{ env.OPERATIVE_SYSTEM_RUNTIMES }}"
+        IFS=' ' read -ra folders <<< "${{ env.OPERATIVE_SYSTEM_FOLDERS }}"
+        for (( i=0; i<${#e[@]}; i+=2 )); do
+          runtime=${runtimes[i]}
+          folder=${folders[i]}
+          dotnet publish $PROJECT_NAME/$PROJECT_NAME.csproj -r $runtime -c Release -o release/$folder --nologo --self-contained true /p:PublishSingleFile=true /p:DebugType=None /p:DebugSymbols=false
+        done
         cd release
         ls
 
