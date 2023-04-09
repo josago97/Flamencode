@@ -55,7 +55,7 @@ jobs:
         IFS=' ' read -ra runtimes <<< "${{ env.OPERATIVE_SYSTEM_RUNTIMES }}"
         IFS=' ' read -ra folders <<< "${{ env.OPERATIVE_SYSTEM_FOLDERS }}"
         releaseFolder=${{env.RELEASE_FOLDER}}
-        for (( i=0; i<${#runtimes[@]}; i+=2 )); do
+        for (( i=0; i<${#runtimes[@]}; i++ )); do
           runtime=${runtimes[i]}
           folder=${releaseFolder}/${folders[i]}
           dotnet publish $PROJECT_NAME/$PROJECT_NAME.csproj -r $runtime -c Release -o $folder --nologo --self-contained true /p:PublishSingleFile=true /p:DebugType=None /p:DebugSymbols=false
@@ -67,7 +67,7 @@ jobs:
     - name: Create release
       run: |
         assets=()
-        for asset in ./*.zip; do
+        for asset in ./${{env.RELEASE_FOLDER}}*.zip; do
           assets+=("-a" "$asset")
         done
         tag_name=v${{ github.event.inputs.version }}
