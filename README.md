@@ -1,5 +1,5 @@
 # Flamencode
-Flamencode is a very low-level joke programming language made with C# and it is based on the Brainfuck language.This language uses some of the typical expressions used in flamenco songs as the name of the operators.
+Flamencode is a very low-level joke programming language made with C# and it is based on the Brainfuck language. This language uses some of the typical expressions used in flamenco songs as the name of the operators.
 
 ## Syntax
 Comments start from the '#' character and end at the line break.
