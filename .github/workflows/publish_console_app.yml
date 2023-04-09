@@ -54,6 +54,14 @@ jobs:
         cd release
         ls
 
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Prueba
+      run: |
+        cd release
+        ls
+          
      # Create release
     - name: Create release
       id: create_release
