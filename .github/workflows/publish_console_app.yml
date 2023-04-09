@@ -6,6 +6,15 @@ name: Publish console app
 # Declaring custom variables
 env:
   PROJECT_NAME: Flamencode
+  WINDOWS_RUNTIME: winx64
+  WINDOWS_FOLDER: Windows-x64
+  MACOS_RUNTIME_X64: osx-x64
+  MACOS_FOLDER_X64: MacOS-x64
+  MACOS_RUNTIME_ARM: osx-arm
+  MACOS_FOLDER_ARM: MacOS-arm
+  LINUX_RUNTIME: linux-x64
+  LINUX_FOLDER_ARM: a
+  RELEASE_FOLDER: release
   OPERATIVE_SYSTEM_RUNTIMES: win-x64 osx-x64 linux-x64
   OPERATIVE_SYSTEM_FOLDERS: Windows64 Macos64 Linux64
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -20,31 +29,28 @@ on:
 
 jobs:
   build:
-  
     # use ubuntu-latest image to run steps on
     runs-on: ubuntu-latest
-    
+    strategy:
+      matrix:
+        include: 
+        - runtime: win-x64
+          folder: Windows-x64
+        - runtime: osx-x64
+          folder: MacOS-x64 
+        - runtime: linux-x64
+          folder: Linux-x64
+          
     steps:
     # uses GitHub's checkout action to checkout code form the master branch
-    - uses: actions/checkout@v3
-    
-    # Set up .NET SDK
-    - name: Setup .NET SDK
-      uses: actions/setup-dotnet@v3.0.3
-      with:
-        dotnet-version: 7.0.x
+    - uses: actions/checkout@v3    
         
     # Build project to the release-folder
     - name: Build .NET Project
       run: |
-        for (( i=0; i<${#OPERATIVE_SYSTEM_RUNTIMES[@]}; i++ )); do
-          runtime=${OPERATIVE_SYSTEM_RUNTIMES[$i]}
-          folder=${OPERATIVE_SYSTEM_FOLDERS[$i]}
-          echo $i
-          echo $runtime
-          echo $folder
-          dotnet publish $PROJECT_NAME/$PROJECT_NAME.csproj -r $runtime -c Release -o release/$folder --nologo --self-contained true /p:PublishSingleFile=true /p:DebugType=None /p:DebugSymbols=false
-        done
+        $runtime = ${{matrix.runtime}}
+        $folder = ${{matrix.folder}}
+        dotnet publish $PROJECT_NAME/$PROJECT_NAME.csproj -r $runtime -c Release -o release/$folder --nologo --self-contained true /p:PublishSingleFile=true /p:DebugType=None /p:DebugSymbols=false
         cd release
         ls
 
