@@ -6,7 +6,8 @@ name: Publish console app
 # Declaring custom variables
 env:
   PROJECT_NAME: Flamencode
-  OPERATIVE_SYSTEMS: win-x64 osx-x64 linux-x64
+  OPERATIVE_SYSTEM_RUNTIMES: win-x64 osx-x64 linux-x64
+  OPERATIVE_SYSTEM_FOLDERS: Windows64 Macos64 Linux64
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 on:
@@ -36,10 +37,10 @@ jobs:
     # Build project to the release-folder
     - name: Build .NET Project
       run: |
-        for os in $OPERATIVE_SYSTEMS
-        do
-          echo $os
-          dotnet publish $PROJECT_NAME/$PROJECT_NAME.csproj -r $os -c Release -o release/$os --nologo --self-contained true /p:PublishSingleFile=true /p:DebugType=None /p:DebugSymbols=false
+        for (( i=0; i<${#OPERATIVE_SYSTEM_RUNTIMES[@]}; i++ )); do
+          runtime=${OPERATIVE_SYSTEM_RUNTIMES[i]}
+          folder=${OPERATIVE_SYSTEM_FOLDERS[i]}
+          dotnet publish $PROJECT_NAME/$PROJECT_NAME.csproj -r $runtime -c Release -o release/$folder --nologo --self-contained true /p:PublishSingleFile=true /p:DebugType=None /p:DebugSymbols=false
         done
         cd release
         ls
