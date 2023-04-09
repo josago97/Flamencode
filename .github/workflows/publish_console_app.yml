@@ -67,7 +67,7 @@ jobs:
     - name: Create release
       run: |
         assets=()
-        for asset in ./${{env.RELEASE_FOLDER}}*.zip; do
+        for asset in ./${{env.RELEASE_FOLDER}}/*.zip; do
           assets+=("-a" "$asset")
         done
         tag_name=v${{ github.event.inputs.version }}
