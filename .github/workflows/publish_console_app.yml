@@ -39,8 +39,8 @@ jobs:
           fullPath=${releaseFolder}/${folder}
           dotnet publish $PROJECT_NAME/$PROJECT_NAME.csproj -r $runtime -c Release -o $fullPath --nologo --self-contained true /p:PublishSingleFile=true /p:DebugType=None /p:DebugSymbols=false
           cd $fullPath
-          ls
           zip -r ../${folder}.zip *
+          cd ../..
         done
     
     - name: Create release
