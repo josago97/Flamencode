@@ -54,37 +54,27 @@ jobs:
       run: |
         IFS=' ' read -ra runtimes <<< "${{ env.OPERATIVE_SYSTEM_RUNTIMES }}"
         IFS=' ' read -ra folders <<< "${{ env.OPERATIVE_SYSTEM_FOLDERS }}"
+        releaseFolder=${{env.RELEASE_FOLDER}}
         for (( i=0; i<${#runtimes[@]}; i+=2 )); do
           runtime=${runtimes[i]}
-          folder=${folders[i]}
-          dotnet publish $PROJECT_NAME/$PROJECT_NAME.csproj -r $runtime -c Release -o release/$folder --nologo --self-contained true /p:PublishSingleFile=true /p:DebugType=None /p:DebugSymbols=false
+          folder=${releaseFolder}/${folders[i]}
+          dotnet publish $PROJECT_NAME/$PROJECT_NAME.csproj -r $runtime -c Release -o $folder --nologo --self-contained true /p:PublishSingleFile=true /p:DebugType=None /p:DebugSymbols=false
+          zip -r ${folder}.zip $folder
         done
-        cd release
+        cd $releaseFolder
         ls
-
+    
+    - name: Create release
+      run: |
+        assets=()
+        for asset in ./*.zip; do
+          assets+=("-a" "$asset")
+        done
+        tag_name=v${{ github.event.inputs.version }}
+        hub release create "${assets[@]}" -m "$tag_name" "$tag_name"
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
 
           
-     # Create release
-    - name: Create release
-      id: create_release
-      uses: actions/create-release@v1
-      with:
-        tag_name: v${{ github.event.inputs.version }} # Reemplaza con la versión que quieras asignar a tu release
-        release_name: Release ${{ github.event.inputs.version }} # Nombre de la release
-        body: '' # Cuerpo de la release
-        draft: false
-        prerelease: false
-        
-    # Upload release
-    - name: Upload release asset
-      uses: actions/upload-release-asset@v1
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./release/*/* # Folders with executables
-        asset_name: Flamencode-{{filename}}.exe # Nombre del ejecutable en la Release
-        asset_content_type: application/octet-stream
-    
-    - name: List Assets
-      run: |
-        echo "Los siguientes activos se han agregado a la versión de lanzamiento:"
-        echo "${{ steps.upload_assets.outputs.asset_names }}"
+
