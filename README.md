@@ -59,6 +59,6 @@ anda ole ole toma                             # And finally a newline from Cell 
 ## How to use
 To run a file code, you can download the executable corresponding to your operating system and type in the shell
 ```
-Flamencode.exe /myFolder/myCode.flam
+flamencode.exe /myFolder/myCode.flam
 ```
 Also there is a [web editor](https://josago97.github.io/Flamencode/).
