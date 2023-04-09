@@ -39,8 +39,10 @@ jobs:
     - uses: actions/checkout@v3 
     
     - name: Prueba
+      env:
+        ALGO: ${{fromJson(env.ABC)}}
       run: |
-        e=${{ fromJSON(env.ABC) }}
+        e=$ALGO
         echo $e
         for (( i=0; i<${#e[@]}; i+=2 )); do
           a=${e[i]}
