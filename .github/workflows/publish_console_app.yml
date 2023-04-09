@@ -60,6 +60,11 @@ jobs:
       uses: actions/upload-release-asset@v1
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./release/MyProject.exe # Reemplaza con la ruta al ejecutable generado en tu proyecto
-        asset_name: MyProject.exe # Nombre del ejecutable en la Release
+        asset_path: ./release/*/* # Folders with executables
+        asset_name: ${{ filename }} # Nombre del ejecutable en la Release
         asset_content_type: application/octet-stream
+    
+    - name: List Assets
+      run: |
+        echo "Los siguientes activos se han agregado a la versión de lanzamiento:"
+        echo "${{ steps.upload_assets.outputs.asset_names }}"
