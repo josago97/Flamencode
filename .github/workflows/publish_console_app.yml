@@ -1,26 +1,14 @@
 # This workflow will build a .NET project
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
 
-name: Publish console app
+name: Publish release console app
 
 # Declaring custom variables
 env:
   PROJECT_NAME: Flamencode
-  WINDOWS_RUNTIME: winx64
-  WINDOWS_FOLDER: Windows-x64
-  MACOS_RUNTIME_X64: osx-x64
-  MACOS_FOLDER_X64: MacOS-x64
-  MACOS_RUNTIME_ARM: osx-arm
-  MACOS_FOLDER_ARM: MacOS-arm
-  LINUX_RUNTIME: linux-x64
-  LINUX_FOLDER_ARM: a
   RELEASE_FOLDER: release
   OPERATIVE_SYSTEM_RUNTIMES: win-x64 osx-x64 linux-x64
   OPERATIVE_SYSTEM_FOLDERS: Windows64 Macos64 Linux64
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  ABC: '["hola", "mundo"]'
-  ABCD: '("hola" "mundo")'
-  MY_ARRAY: "valor1,valor2,valor3"
 
 on:
   workflow_dispatch:
@@ -38,17 +26,7 @@ jobs:
     steps:
     # uses GitHub's checkout action to checkout code form the master branch
     - uses: actions/checkout@v3 
-    
-    - name: Prueba
-      run: |
-        IFS=',' read -ra e <<< "${{ env.MY_ARRAY }}"
-        echo "${e[@]}"
-        for (( i=0; i<${#e[@]}; i+=2 )); do
-          a=${e[i]}
-          b=${e[i+1]}
-          echo "a=$a, b=$b"
-        done
-        
+
     # Build project to the release-folder
     - name: Build .NET Project
       run: |
@@ -73,8 +51,4 @@ jobs:
         tag_name=v${{ github.event.inputs.version }}
         hub release create "${assets[@]}" -m "$tag_name" "$tag_name"
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      
-
-          
-
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}      
