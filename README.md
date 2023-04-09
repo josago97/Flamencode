@@ -14,7 +14,7 @@ Comments start from the '#' character and end at the line break.
 | dale | [ | If the byte at the data pointer is zero, then instead of moving the instruction pointer forward to the next command, jump it forward to the command after the matching `arre` command |
 | arre | ] | If the byte at the data pointer is nonzero, then instead of moving the instruction pointer forward to the next command, jump it back to the command after the matching `dale` command |
 
-## Example Hello World
+## Example
 In the [Examples folder](https://github.com/josago97/Flamencode/tree/main/Examples) there are some sample implementations, example Hello World:
 ```
 # Prints Hello World!
