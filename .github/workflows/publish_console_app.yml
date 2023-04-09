@@ -55,6 +55,7 @@ jobs:
         ls
 
   publish:
+    needs: build
     runs-on: ubuntu-latest
     steps:
     - name: Prueba
