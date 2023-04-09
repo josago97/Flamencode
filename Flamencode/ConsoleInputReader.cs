@@ -1,15 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Flamencode;
+﻿namespace Flamencode;
 
 internal class ConsoleInputReader : Stream
 {
-    private string _input;
-
     public override bool CanRead => true;
 
     public override bool CanSeek => throw new NotImplementedException();
@@ -31,9 +23,9 @@ internal class ConsoleInputReader : Stream
 
     public override int Read(byte[] buffer, int offset, int count)
     {
-        byte a = (byte)Console.ReadKey().KeyChar;
+        byte key = (byte)Console.ReadKey().KeyChar;
 
-        buffer[offset] = a; 
+        buffer[offset] = key;
 
         return 1;
     }
