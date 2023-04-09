@@ -6,7 +6,7 @@ name: Publish console app
 # Declaring custom variables
 env:
   PROJECT_NAME: Flamencode
-  OPERATIVE_SYSTEMS: '["win-x64", "osx-x64", "linux-x64"]'
+  OPERATIVE_SYSTEMS: win-x64 osx-x64 linux-x64
 
 on:
   workflow_dispatch:
@@ -14,6 +14,7 @@ on:
       version:
         description: 'Release version'
         required: true
+        default: '1.0.0'
 
 jobs:
   build:
@@ -34,7 +35,8 @@ jobs:
     # Build project to the release-folder
     - name: Build .NET Project
       run: |
-        for os in $(echo "${{ env.OPERATIVE_SYSTEMS }}" | jq -r '.[]'); do
+        for os in $(echo $OPERATIVE_SYSTEMS
+        do
           echo $os
           dotnet publish $PROJECT_NAME/$PROJECT_NAME.csproj -r $os -c Release -o release --nologo --self-contained true /p:PublishSingleFile=true /p:DebugType=None /p:DebugSymbols=false
         done
