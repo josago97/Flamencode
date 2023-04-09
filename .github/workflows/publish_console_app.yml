@@ -18,6 +18,7 @@ env:
   OPERATIVE_SYSTEM_RUNTIMES: win-x64 osx-x64 linux-x64
   OPERATIVE_SYSTEM_FOLDERS: Windows64 Macos64 Linux64
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  ABC: '["hola", "mundo"]'
 
 on:
   workflow_dispatch:
@@ -31,19 +32,21 @@ jobs:
   build:
     # use ubuntu-latest image to run steps on
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        include: 
-        - runtime: win-x64
-          folder: Windows-x64
-        - runtime: osx-x64
-          folder: MacOS-x64 
-        - runtime: linux-x64
-          folder: Linux-x64
-          
+    
     steps:
     # uses GitHub's checkout action to checkout code form the master branch
-    - uses: actions/checkout@v3    
+    - uses: actions/checkout@v3 
+    
+    - name: Prueba
+      run: |
+        e=${{ fromJSON($ABC) }}
+        for (( i=0; i<${#e[@]}; i+=2 )); do
+          a=${e[i]}
+          b=${e[i+1]}
+          echo "a=$a, b=$b"
+        done
+        cd release
+        ls
         
     # Build project to the release-folder
     - name: Build .NET Project
@@ -54,14 +57,7 @@ jobs:
         cd release
         ls
 
-  publish:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-    - name: Prueba
-      run: |
-        cd release
-        ls
+
           
      # Create release
     - name: Create release
