@@ -40,7 +40,7 @@ jobs:
     
     - name: Prueba
       env:
-        ALGO: ${{fromJson(env.ABC)}}
+        ALGO: ${{fromJson('["hola", "mundo"]')}}
       run: |
         e=$ALGO
         echo $e
