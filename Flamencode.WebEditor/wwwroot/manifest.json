@@ -1,6 +1,6 @@
 {
-  "name": "Flamencode Editor",
-  "short_name": "Flamencode Editor",
+  "name": "Flamencode editor",
+  "short_name": "Flamencode editor",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#ffffff",

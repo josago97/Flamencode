@@ -1,6 +1,21 @@
 ﻿.title {
-    margin: 20px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+
+    margin: 15px 0;
     text-align: center;
+    font-size: clamp(1em, 2em, calc(1.375rem + 1.5vw));
+    font-weight: 500;
+}
+
+.title img {
+    max-width: 1.25em;
+    max-height: 1.25em;
+
+    filter: drop-shadow(0 0 2px black);
 }
 
 .subtitle {
