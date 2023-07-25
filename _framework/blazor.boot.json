@@ -9,7 +9,7 @@
     "assembly": {
       "BlazorMonaco.dll": "sha256-Hbwc+8Nc7E6NYECP0pDCuU7w9KjJoNK0LYI95D\/mJEI=",
       "Flamencode.Core.dll": "sha256-Mhkvt+hNPQy8V7LJDiO\/Lbpkx3cD7ZEu1rjODGl6yU4=",
-      "Flamencode.WebEditor.dll": "sha256-S9t8lZm6bd\/f4NkkYhdsaPCKk8n5ObOsvr6Hv4CufBI=",
+      "Flamencode.WebEditor.dll": "sha256-yAN3yf2ZL5sPZwrS3TckP+AeFqH9aBHQwG8IkISVZFM=",
       "Microsoft.AspNetCore.Components.dll": "sha256-x1FeS6SfnC\/75nINC+PeckkKOw2yzfBVAFA8hmxjckU=",
       "Microsoft.AspNetCore.Components.Forms.dll": "sha256-du77rVxe3b26x69LZz87dAWx9Hb3Wma6fR5udFDHAT4=",
       "Microsoft.AspNetCore.Components.Web.dll": "sha256-cOrdS37+dYdqVnZeFlHSD2Kkf944v1q8YufXkfsz\/RU=",
@@ -55,7 +55,7 @@
     "runtime": {
       "dotnet.7.0.9.5nwz0radcg.js": "sha256-+d7\/OSsp3ShuJiwc7mVjvf3mQTaE422SxclsjmjS4q8=",
       "dotnet.timezones.blat": "sha256-dKqztlnWPN3rvLJRCI444rLYX55dtIQt\/DQkFslO+z4=",
-      "dotnet.wasm": "sha256-A6z5edGq8\/A1pvdvRemF6Il0IrzwkB+YOWZqhhMReGY=",
+      "dotnet.wasm": "sha256-6Sjgz8O1eGav8qVD1Wxgl8e7JsbQD5mJ+EOM6Ax4uug=",
       "icudt_CJK.dat": "sha256-SZLtQnRc0JkwqHab0VUVP7T3uBPSeYzxzDnpxPpUnHk=",
       "icudt_EFIGS.dat": "sha256-8fItetYY8kQ0ww6oxwTLiT3oXlBwHKumbeP2pRF4yTc=",
       "icudt_no_CJK.dat": "sha256-L7sV7NEYP37\/Qr2FPCePo5cJqRgTXRwGHuwF5Q+0Nfs=",
@@ -64,7 +64,7 @@
     "runtimeAssets": {
       "dotnet.wasm": {
         "behavior": "dotnetwasm",
-        "hash": "sha256-A6z5edGq8\/A1pvdvRemF6Il0IrzwkB+YOWZqhhMReGY="
+        "hash": "sha256-6Sjgz8O1eGav8qVD1Wxgl8e7JsbQD5mJ+EOM6Ax4uug="
       }
     },
     "satelliteResources": null
