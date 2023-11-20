@@ -43,6 +43,11 @@
     justify-content: space-between;
 }
 
+label:hover > *,
+button:hover {
+    background-color: #0099ff33;
+}
+
 .input-output {
     margin-top: 15px;
     display: flex;

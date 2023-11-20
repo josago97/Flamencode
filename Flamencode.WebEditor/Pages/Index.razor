@@ -19,7 +19,7 @@
         <label for="filePicker" style="cursor: pointer;">
             <button style="pointer-events: none;">Load</button>
         </label>
-        <InputFile id="filePicker" OnChange="@LoadFileAsync" accept="@FILE_EXTENSION" hidden/>
+        <InputFile id="filePicker" OnChange="@LoadFileAsync" accept="@FILE_EXTENSION" hidden />
         <button @onclick="SaveFileAsync">Save</button>
     </div>
     <button @onclick="ExecutePauseAsync">@ExecutePauseButtonText</button>
