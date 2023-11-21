@@ -44,6 +44,11 @@
     justify-content: space-between;
 }
 
+label:hover > *[b-lppml8dm8b],
+button:hover[b-lppml8dm8b] {
+    background-color: #0099ff33;
+}
+
 .input-output[b-lppml8dm8b] {
     margin-top: 15px;
     display: flex;
