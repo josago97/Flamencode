@@ -26,8 +26,8 @@ jobs:
         dotnet-version: 7.0.X
         
      # Install wasm-tools
-    - name: Install wasm-toolsnet7
-      run: dotnet workload install wasm-tools
+    - name: Install wasm-tools-net7
+      run: dotnet workload install wasm-tools-net7
 
     # publishes Blazor project to the release-folder
     - name: Publish .NET Project
