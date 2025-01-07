@@ -27,6 +27,12 @@ jobs:
     # uses GitHub's checkout action to checkout code form the master branch
     - uses: actions/checkout@v4
 
+    # sets up .NET SDK
+    - name: Setup .NET SDK
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 9.0.X
+
     # Build project to the release-folder
     - name: Build .NET Project
       run: |
