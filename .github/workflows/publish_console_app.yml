@@ -25,7 +25,7 @@ jobs:
     
     steps:
     # uses GitHub's checkout action to checkout code form the master branch
-    - uses: actions/checkout@v3 
+    - uses: actions/checkout@v4
 
     # Build project to the release-folder
     - name: Build .NET Project

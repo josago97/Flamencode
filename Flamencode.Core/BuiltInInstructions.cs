@@ -1,6 +1,4 @@
-﻿using static System.Runtime.InteropServices.JavaScript.JSType;
-
-namespace Flamencode;
+﻿namespace Flamencode;
 
 internal static class BuiltInInstructions
 {
