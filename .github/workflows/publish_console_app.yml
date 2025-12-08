@@ -25,13 +25,13 @@ jobs:
     
     steps:
     # uses GitHub's checkout action to checkout code form the master branch
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v5
 
     # sets up .NET SDK
     - name: Setup .NET SDK
-      uses: actions/setup-dotnet@v4
+      uses: actions/setup-dotnet@v5
       with:
-        dotnet-version: 9.0.X
+        dotnet-version: 10.0.X
 
     # Build project to the release-folder
     - name: Build .NET Project

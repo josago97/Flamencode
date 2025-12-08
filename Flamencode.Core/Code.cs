@@ -139,7 +139,6 @@ internal class Instruction
     public Command Command { get; set; }
     public int LinePosition { get; set; }
     public int PositionAtLine { get; set; }
-
 }
 
 internal class Function : Instruction
